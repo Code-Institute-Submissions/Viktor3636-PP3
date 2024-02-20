@@ -60,3 +60,31 @@ def play_again():
             return choice == 'yes'
         else:
             print("Please enter 'yes' or 'no'.")
+
+def main():
+    play = True
+    while play:
+        board = initialize_board()
+        place_boats(board)
+        tries = 6
+        while tries > 0:
+            print_board(board)
+            print(f"\nYou have {tries} tries left.")
+            row, col = take_shot()
+            if board[row][col] == 'B':
+                print("\nHit! You sank a boat!")
+                board[row][col] = 'X'
+                if all(board[i][j] == 'X' for i in range(5) for j in range(5) if board[i][j] == 'B'):
+                    print_board(board, reveal=True)
+                    print("\nCongratulations! You sank all the boats!")
+                    break
+            else:
+                print("\nMiss!")
+            tries -= 1
+        else:
+            print_board(board, reveal=True)
+            print("\nGame Over! You ran out of tries.")
+        play = play_again()
+
+if __name__ == "__main__":
+    main()
