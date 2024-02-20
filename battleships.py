@@ -27,3 +27,17 @@ def print_board(board, reveal=False):
             else:
                 print(f" {board[i][j]} ", end='')
         print()
+
+def take_shot():
+    """Prompt the player for a shot."""
+    while True:
+        try:
+            shot = input("Enter your shot (e.g., A3): ").upper()
+            col = ord(shot[0]) - ord('A')
+            row = int(shot[1]) - 1
+            if 0 <= col <= 4 and 0 <= row <= 4:
+                return row, col
+            else:
+                print("Please enter a valid shot within the board range.")
+        except (IndexError, ValueError):
+            print("Please enter a valid shot (e.g., A3).")
