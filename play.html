@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship Game</title>
+</head>
+<body>
+    <h1>Battleship Game</h1>
+    <pre>{{ board }}</pre>
+    <form action="/play" method="POST">
+        <label for="row">Enter row number:</label>
+        <input type="number" id="row" name="row" min="1" max="5">
+        <label for="col">Enter column number:</label>
+        <input type="number" id="col" name="col" min="1" max="5">
+        <button type="submit">Shoot</button>
+    </form>
+</body>
+</html>
