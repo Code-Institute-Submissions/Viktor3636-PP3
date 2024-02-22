@@ -1,7 +1,4 @@
 import random
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
 
 def initialize_board():
     """
@@ -27,16 +24,15 @@ def print_board(board, reveal=False):
     """
     Print the current state of the game board.
     """
-    board_str = "   A  B  C  D  E\n"
+    print("   A  B  C  D  E")
     for i in range(5):
-        board_str += f"{i+1} "
+        print(f"{i+1} ", end='')
         for j in range(5):
             if not reveal and board[i][j] == 'B':
-                board_str += " O "
+                print(" O ", end='')
             else:
-                board_str += f" {board[i][j]} "
-        board_str += '\n'
-    return board_str
+                print(f" {board[i][j]} ", end='')
+        print()
 
 def take_shot():
     """
@@ -65,41 +61,30 @@ def play_again():
         else:
             print("Please enter 'yes' or 'no'.")
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/play', methods=['POST'])
-def play():
+def main():
     play = True
     while play:
         board = initialize_board()
         place_boats(board)
         tries = 6
         while tries > 0:
-            board_str = print_board(board)
-            board_str += f"\nYou have {tries} tries left.\n"
-            # Take input from the web form instead of the console
-            #row, col = take_shot()
-            # Instead of taking input from console, get input from the form
-            row = int(request.form['row']) - 1
-            col = int(request.form['col']) - 1
-
+            print_board(board)
+            print(f"\nYou have {tries} tries left.")
+            row, col = take_shot()
             if board[row][col] == 'B':
-                board_str += "\nHit! You sank a boat!"
+                print("\nHit! You sank a boat!")
                 board[row][col] = 'X'
                 if all(board[i][j] == 'X' for i in range(5) for j in range(5) if board[i][j] == 'B'):
-                    board_str += print_board(board, reveal=True)
-                    board_str += "\nCongratulations! You sank all the boats!"
+                    print_board(board, reveal=True)
+                    print("\nCongratulations! You sank all the boats!")
                     break
             else:
-                board_str += "\nMiss!"
+                print("\nMiss!")
             tries -= 1
         else:
-            board_str += print_board(board, reveal=True)
-            board_str += "\nGame Over! You ran out of tries."
+            print_board(board, reveal=True)
+            print("\nGame Over! You ran out of tries.")
         play = play_again()
-    return render_template('play.html', board=board_str)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    main()
