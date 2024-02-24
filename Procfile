@@ -1,1 +1,1 @@
-web:python battleships.py
+web: node index.js
