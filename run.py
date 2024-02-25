@@ -41,7 +41,7 @@ def take_shot():
     """
     while True:
         try:
-            shot = input("Enter your shot (e.g., A3): ").upper()
+            shot = input("Enter your shot (EXAMPLE A1 OR C3 OR B2: ").upper()
             col = ord(shot[0]) - ord('A')
             row = int(shot[1]) - 1
             if 0 <= col <= 4 and 0 <= row <= 4:
@@ -49,7 +49,7 @@ def take_shot():
             else:
                 print("Please enter a valid shot within the board range.")
         except (IndexError, ValueError):
-            print("Please enter a valid shot (e.g., A3).")
+            print("Enter your shot (EXAMPLE A1 OR C3 OR B2")
 
 def play_again():
     """
