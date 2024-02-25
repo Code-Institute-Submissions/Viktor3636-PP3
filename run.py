@@ -1,11 +1,13 @@
 import random
 import json
 
+
 def initialize_board():
     """
     Initialize the game board with empty cells.
     """
     return [['O' for _ in range(5)] for _ in range(5)]
+
 
 def place_boats(board):
     """
@@ -21,6 +23,7 @@ def place_boats(board):
                 board[row][col] = 'B'
                 break
 
+
 def print_board(board, reveal=False):
     """
     Print the current state of the game board.
@@ -34,6 +37,7 @@ def print_board(board, reveal=False):
             else:
                 print(f" {board[i][j]} ", end='')
         print()
+
 
 def take_shot():
     """
@@ -50,6 +54,7 @@ def take_shot():
                 print("Please enter a valid shot within the board range.")
         except (IndexError, ValueError):
             print("Enter your shot (EXAMPLE A1 OR C3 OR B2")
+
 
 def play_again():
     """
@@ -72,9 +77,10 @@ def main_menu():
     print("Here you can play a game of Battleships against computer! \n")
     print("You have 6 tries to sink the 3 boats on the playfield.\n")
     print("Every boat has a unique placement.")
-    print("Choose 1 letter and 1 number and add them together and press Enter!\n")
+    print("Add 1 letter and 1 number together and press Enter!\n")
     print("Good luck!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
+
 
 def main():
     main_menu()  # Call the main menu function at the beginning
@@ -90,7 +96,12 @@ def main():
             if board[row][col] == 'B':
                 print("\nHit! You sank a boat!")
                 board[row][col] = 'X'
-                if all(board[i][j] == 'X' for i in range(5) for j in range(5) if board[i][j] == 'B'):
+                if all(
+                    board[i][j] == 'X'
+                    for i in range(5)
+                    for j in range(5)
+                    if board[i][j] == 'B'
+                ):
                     print_board(board, reveal=True)
                     print("\nCongratulations! You sank all the boats!")
                     break
@@ -101,6 +112,7 @@ def main():
             print_board(board, reveal=True)
             print("\nGame Over! You ran out of tries.")
         play = play_again()
+
 
 if __name__ == "__main__":
     main()

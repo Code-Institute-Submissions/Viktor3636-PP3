@@ -13,4 +13,5 @@ Battleship is a game where you challenge computer to sink the 3 ships thats rand
 
 ## Site Goals
 
-Battleship is a well known game for a long time but nowadays it feels like it disappeared from the game section. I want to provide this game so more people get to know about it and let it become mainstream again. 
+Battleship is a well known game for a long time but nowadays it feels like it disappeared from the game section. I want to provide this game so more people get to know about it and let it become mainstream again.
+
