@@ -62,7 +62,22 @@ def play_again():
         else:
             print("Please enter 'yes' or 'no'.")
 
+
+def main_menu():
+    """
+    Welcome message to players
+    and how to play
+    """
+    print("\n\nWelcome to Battleships!\n")
+    print("Here you can play a game of Battleships against computer! \n")
+    print("You have 6 tries to sink the 3 boats on the playfield.\n")
+    print("Every boat has a unique placement.")
+    print("Choose 1 letter and 1 number and add them together and press Enter!\n")
+    print("Good luck!\n")
+    print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
+
 def main():
+    main_menu()  # Call the main menu function at the beginning
     play = True
     while play:
         board = initialize_board()
