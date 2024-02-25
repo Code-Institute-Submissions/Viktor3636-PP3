@@ -24,7 +24,7 @@ def place_boats(board):
                 break
 
 
-def print_board(board, reveal=False):
+def print_board(board, reveal=False, shot_positions=set()):
     """
     Print the current state of the game board.
     """
@@ -32,28 +32,32 @@ def print_board(board, reveal=False):
     for i in range(5):
         print(f"{i+1} ", end='')
         for j in range(5):
-            if not reveal and board[i][j] == 'B':
-                print(" O ", end='')
+            if (i, j) in shot_positions:
+                print(" M ", end='')  # Marking positions already shot
+            elif not reveal and board[i][j] == 'B':
+                print(" O ", end='')  # Hiding boats during regular play
             else:
                 print(f" {board[i][j]} ", end='')
         print()
 
 
-def take_shot():
+def take_shot(shot_positions):
     """
     Prompt the player for a shot.
     """
     while True:
         try:
-            shot = input("Enter your shot (EXAMPLE A1 OR C3 OR B2: ").upper()
+            shot = input("Enter your shot (EXAMPLE A1 OR C3 OR B2): ").upper()
             col = ord(shot[0]) - ord('A')
             row = int(shot[1]) - 1
-            if 0 <= col <= 4 and 0 <= row <= 4:
+            if (row, col) in shot_positions:
+                print("You already shot at this position. Try again.")
+            elif 0 <= col <= 4 and 0 <= row <= 4:
                 return row, col
             else:
                 print("Please enter a valid shot within the board range.")
         except (IndexError, ValueError):
-            print("Enter your shot (EXAMPLE A1 OR C3 OR B2")
+            print("Enter your shot (EXAMPLE A1 OR C3 OR B2)")
 
 
 def play_again():
@@ -89,10 +93,12 @@ def main():
         board = initialize_board()
         place_boats(board)
         tries = 6
+        shot_positions = set()  # Store the shot positions
         while tries > 0:
-            print_board(board)
+            print_board(board, shot_positions=shot_positions)
             print(f"\nYou have {tries} tries left.")
-            row, col = take_shot()
+            row, col = take_shot(shot_positions)
+            shot_positions.add((row, col))  # Add the shot position to the set
             if board[row][col] == 'B':
                 print("\nHit! You sank a boat!")
                 board[row][col] = 'X'
