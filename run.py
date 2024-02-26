@@ -79,7 +79,7 @@ def main_menu():
     """
     print("\n\nWelcome to Battleships!\n")
     print("Here you can play a game of Battleships against computer! \n")
-    print("You have 6 tries to sink the 3 boats on the playfield.\n")
+    print("You have 10 tries to sink the 3 boats on the playfield.\n")
     print("Every boat has a unique placement.")
     print("Add 1 letter and 1 number together and press Enter!\n")
     print("Good luck!\n")
@@ -92,7 +92,7 @@ def main():
     while play:
         board = initialize_board()
         place_boats(board)
-        tries = 6
+        tries = 10
         shot_positions = set()  # Store the shot positions
         while tries > 0:
             print_board(board, shot_positions=shot_positions)
