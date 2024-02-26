@@ -14,6 +14,9 @@ Battleship is a game where you challenge computer to sink the 3 ships thats rand
 * [Validator Testing](#validator-testing)
    * [CI Python Linter](#ci-python-linter)
    * [Unfixed Bugs](#unfixed-bugs)
+* [Deployment](#deployment)
+   * [Link to live website](#live-website)
+* [Credits](#credits)
 
 
 
@@ -65,7 +68,7 @@ If you try to shot outside the board
 
 ## Unfixed Bugs
 
-No unfixed bugs!
+* Can't type or do anything in the terminal with my Iphone.
 
 # Testing
 
@@ -74,7 +77,35 @@ What i have tested.
 * I have tried to break the program by using wrong inputs without any fails.
 * I have ran the program thru CI Python Linter without and problems.
 * The code is tested in both console on Gitpod and Heroku without problems.
-* I have 
+* Tested the website in Firefox, Chrome & Safari without problems .
+* Can't do anything in the terminal with my Iphone.
+
+# Deployment
+
+This project was deployed using Code Institute's mock terminal for Heroku following the steps outlined below:
+
+* In Heroku account choose 'Create new app' from the 'New' menu
+* In 'Settings' configure 'Config Vars', scroll down to the 'Buildpack' section and add Python and NodeJS buildpacks
+* In the 'Deploy' tab select 'GitHub' to connect to your GitHub repository
+* Choose the repository to deploy
+* Scroll down the page and press 'Deploy' button
+* Once the web app has been successfully deployed, you will see a link to the deployed app. This link can be used to access and test the application
+
+<br>
+<br>
+
+## Live Website
+
+Link to the live platform - [Battleships PP3](https://pp3-battleships-viktor-1c43cb2d6445.herokuapp.com/)
+
+
+# Credits
+
+* I want to give a huge thanks to my mentor Oluwafemi Medale that realised i tried to do my own templates when i missed it was already done for me.
+* Want to thank [Dr Codie](https://www.youtube.com/watch?v=Ej7I8BPw7Gk&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i) for helping me get a structure of the game.
+* Also i wanna thank [Code Institute](https://codeinstitute.net/se/) for the templates
+
+
 
 
 
