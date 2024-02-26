@@ -1,5 +1,4 @@
 import random
-import json
 
 
 def initialize_board():
@@ -33,11 +32,15 @@ def print_board(board, reveal=False, shot_positions=set()):
         print(f"{i+1} ", end='')
         for j in range(5):
             if (i, j) in shot_positions:
-                print(" M ", end='')  # Marking positions already shot
-            elif not reveal and board[i][j] == 'B':
-                print(" O ", end='')  # Hiding boats during regular play
+                if board[i][j] == 'X':
+                    print(" H ", end='')  # Marking hit positions
+                else:
+                    print(" M ", end='')  # Marking miss positions
             else:
-                print(f" {board[i][j]} ", end='')
+                if not reveal and board[i][j] == 'B':
+                    print(" O ", end='')  # Hiding boats during regular play
+                else:
+                    print(f" {board[i][j]} ", end='')
         print()
 
 
@@ -95,7 +98,7 @@ def main():
         tries = 10
         shot_positions = set()  # Store the shot positions
         while tries > 0:
-            print_board(board, shot_positions=shot_positions)
+            print_board(board, reveal=False, shot_positions=shot_positions)
             print(f"\nYou have {tries} tries left.")
             row, col = take_shot(shot_positions)
             shot_positions.add((row, col))  # Add the shot position to the set
