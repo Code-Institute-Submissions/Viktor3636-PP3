@@ -81,10 +81,12 @@ def main_menu():
     and how to play
     """
     print("\n\nWelcome to Battleships!\n")
-    print("Here you can play a game of Battleships against computer! \n")
-    print("You have 10 tries to sink the 3 boats on the playfield.\n")
+    print("Play a game of Battleships against computer!\n")
+    print("Sink the 3 boats in 10 shots.\n")
     print("Every boat has a unique placement.")
-    print("Add 1 letter and 1 number together and press Enter!\n")
+    print("Add 1 row & 1 column together and press Enter!\n")
+    print("Example: A1, B2, C3")
+    print("H = Hit   M = Miss")
     print("Good luck!\n")
     print("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n")
 
