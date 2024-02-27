@@ -50,17 +50,21 @@ def take_shot(shot_positions):
     """
     while True:
         try:
-            shot = input("Enter your shot (EXAMPLE A1 OR C3 OR B2): ").upper()
+            shot = input("Enter your shot (EXAMPLE A1 OR C3 OR B2): ").strip().upper()
+            if len(shot) != 2 or not shot[0].isalpha() or not shot[1].isdigit():
+                raise ValueError("Invalid input format. Please enter a valid shot (e.g., A1, C3, B2).")
+
             col = ord(shot[0]) - ord('A')
             row = int(shot[1]) - 1
+
             if (row, col) in shot_positions:
                 print("You already shot at this position. Try again.")
             elif 0 <= col <= 4 and 0 <= row <= 4:
                 return row, col
             else:
                 print("Please enter a valid shot within the board range.")
-        except (IndexError, ValueError):
-            print("Enter your shot (EXAMPLE A1 OR C3 OR B2)")
+        except ValueError as e:
+            print(str(e))
 
 
 def play_again():
