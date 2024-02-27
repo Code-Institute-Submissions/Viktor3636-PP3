@@ -101,7 +101,7 @@ Link to the live platform - [Battleships PP3](https://pp3-battleships-viktor-1c4
 
 # Credits
 
-* I want to give a huge thanks to my mentor Oluwafemi Medale that realised i tried to do my own templates when i missed it was already done for me.
+* I want to give a huge thanks to my mentor Oluwafemi Medale that realised i tried to do my own templates.
 * Want to thank [Dr Codie](https://www.youtube.com/watch?v=Ej7I8BPw7Gk&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i) for helping me get a structure of the game.
 * Also i wanna thank [Code Institute](https://codeinstitute.net/se/) for the templates
 
